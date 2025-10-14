@@ -21,10 +21,22 @@ function scrollPortfolio(direction) {
     // Scroll to show the current card
     if (portfolioScroll) {
         const cardWidth = 400 + 32; // card width + gap
-        const scrollPosition = currentIndex * cardWidth;
-        portfolioScroll.style.transform = `translateX(-${scrollPosition}px)`;
+        const containerWidth = portfolioScroll.parentElement.offsetWidth;
+        const scrollPosition = currentIndex * cardWidth - (containerWidth / 2 - cardWidth / 2);
+        portfolioScroll.style.transform = `translateX(-${Math.max(0, scrollPosition)}px)`;
     }
 }
+
+// Initialize portfolio on load
+document.addEventListener('DOMContentLoaded', () => {
+    if (portfolioScroll) {
+        // Center the first card on load
+        const cardWidth = 400 + 32;
+        const containerWidth = portfolioScroll.parentElement.offsetWidth;
+        const initialPosition = (containerWidth / 2) - (cardWidth / 2);
+        portfolioScroll.style.transform = `translateX(${Math.max(0, initialPosition)}px)`;
+    }
+});
 
 // Arrow navigation
 if (leftArrow && rightArrow) {
@@ -225,4 +237,5 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 }
+
 
