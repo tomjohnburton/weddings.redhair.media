@@ -1,126 +1,101 @@
-# Weddings Red Hair Media - Cinematic Wedding Portfolio
+# Weddings by Redhair Media
 
-A modern, cinematic wedding portfolio website inspired by Plus Two Films. This website showcases wedding videography services with a bold, fresh, and timeless design.
+A cinematic wedding films portfolio website showcasing beautiful wedding cinematography.
 
-## Features
+## 🎬 Features
 
-- **Cinematic Design**: Modern, elegant design with gold accents and smooth animations
-- **Responsive Layout**: Fully responsive design that works on all devices
-- **Interactive Portfolio**: Filterable portfolio gallery with hover effects
-- **Contact Form**: Working contact form with validation
-- **Smooth Scrolling**: Smooth navigation between sections
-- **Mobile-First**: Optimized for mobile devices with hamburger menu
-- **Performance Optimized**: Debounced scroll events and lazy loading ready
+- Clean, minimal design with black, white, and grey color palette
+- Responsive layout optimized for all devices
+- Portfolio showcase with hover effects
+- Contact forms and social media integration
+- German legal compliance (Impressum & Datenschutz)
 
-## Sections
+## 🚀 Deployment on Vercel
 
-1. **Hero Section**: Full-screen video background with call-to-action buttons
-2. **About Section**: Company story and philosophy
-3. **Portfolio Section**: Filterable gallery of wedding films
-4. **Services Section**: Three service packages with pricing information
-5. **Contact Section**: Contact form and business information
+This project is configured for easy deployment on Vercel:
 
-## Customization
+### Automatic Deployment
 
-### Colors
-The main color scheme uses:
-- Primary Gold: `#d4af37` to `#ffd700`
-- Text: `#333` (dark gray)
-- Background: `#f8f9fa` (light gray)
+1. **Connect your GitHub repository to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Sign in with your GitHub account
+   - Click "New Project"
+   - Import your `weddings.redhair.media` repository
 
-### Fonts
-- Headings: Playfair Display (elegant serif)
-- Body Text: Inter (modern sans-serif)
+2. **Deploy:**
+   - Vercel will automatically detect this as a static HTML site
+   - No build configuration needed
+   - Your site will be live at `https://your-project.vercel.app`
 
-### Content Updates
+### Manual Deployment
 
-#### Replace Placeholder Content
-1. **Hero Video**: Replace the sample video URL in `index.html` line 21
-2. **About Image**: Replace the placeholder with your actual image
-3. **Portfolio Items**: Update with real wedding film thumbnails and information
-4. **Contact Information**: Update email, phone, and social media links
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-#### Add Real Images
-Replace the placeholder divs with actual images:
-```html
-<!-- Instead of -->
-<div class="image-placeholder">
-    <i class="fas fa-camera"></i>
-    <p>About Image</p>
-</div>
+# Deploy from your project directory
+vercel
 
-<!-- Use -->
-<img src="path/to/your/image.jpg" alt="Description" class="about-image">
+# For production deployment
+vercel --prod
 ```
 
-### Portfolio Management
-To add new portfolio items:
-1. Copy an existing portfolio item in the HTML
-2. Update the `data-category` attribute (wedding-film, highlight, short)
-3. Replace placeholder content with real information
-4. Add actual images or video thumbnails
-
-### Service Packages
-Update the service cards in the services section:
-- Modify pricing information
-- Update service descriptions
-- Add or remove service features
-- Change the "Most Popular" badge
-
-## File Structure
+## 📁 Project Structure
 
 ```
-weddings.redhair.media/
-├── index.html          # Main HTML file
+├── index.html          # Main website page
 ├── styles.css          # All CSS styles
 ├── script.js           # JavaScript functionality
-└── README.md          # This file
+├── impressum.html      # German legal page
+├── datenschutz.html    # German privacy policy
+├── public/             # Image assets
+├── vercel.json         # Vercel configuration
+├── package.json        # Project metadata
+└── README.md           # This file
 ```
 
-## Browser Support
+## 🎨 Design System
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+- **Colors**: Black, white, and grey palette
+- **Typography**: Sabon serif for headings, Inter for body text
+- **Layout**: Clean, minimal with proper spacing
+- **Components**: Consistent 8px border radius throughout
 
-## Performance Features
+## 📱 Responsive Design
 
-- Debounced scroll events for smooth performance
-- CSS animations optimized for 60fps
-- Lazy loading ready for images
-- Minimal external dependencies
-- Optimized font loading
+- **Desktop**: Full-width layouts with proper spacing
+- **Tablet**: Adapted grid layouts (2-column)
+- **Mobile**: Single-column layouts with touch-friendly interactions
 
-## SEO Ready
+## 🔧 Local Development
 
-The website includes:
-- Semantic HTML structure
-- Meta tags for social sharing
-- Proper heading hierarchy
-- Alt text ready for images
-- Fast loading times
+```bash
+# Serve locally with Python
+python3 -m http.server 3000
 
-## Getting Started
+# Or with Node.js
+npx serve .
 
-1. Open `index.html` in a web browser
-2. Customize content in the HTML file
-3. Update images and videos
-4. Modify colors and fonts in `styles.css`
-5. Test on different devices
+# Or with any static file server
+```
 
-## Future Enhancements
+## 📄 Legal Compliance
 
-Consider adding:
-- Video modal for portfolio items
-- Blog section for wedding tips
-- Client testimonials section
-- Online booking system
-- Multi-language support
-- Advanced animations
-- CMS integration
+This website includes:
+- **Impressum** (German legal requirements)
+- **Datenschutz** (GDPR-compliant privacy policy)
+- Proper cookie handling and data protection notices
 
-## Support
+## 🌐 Live Site
 
-For customization help or questions, refer to the code comments or contact the developer.
+Visit the live site: [Your Vercel URL will appear here after deployment]
+
+## 📞 Contact
+
+- Email: weddings@redhair.media
+- Instagram: [@redhair.media](https://www.instagram.com/redhair.media/)
+- YouTube: [Redhair Media](https://www.youtube.com/@redhair_media)
+
+---
+
+Built with ❤️ for beautiful wedding cinematography

@@ -1,0 +1,25 @@
+# Development files
+.git/
+.gitignore
+README.md
+.vscode/
+.idea/
+
+# Documentation
+*.md
+docs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~

@@ -1,0 +1,26 @@
+{
+  "name": "weddings-redhair-media",
+  "version": "1.0.0",
+  "description": "Cinematic Wedding Films Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required for static site'",
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "wedding",
+    "cinematography",
+    "portfolio",
+    "static-site"
+  ],
+  "author": "Redhair Media",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomjohnburton/weddings.redhair.media"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
