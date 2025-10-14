@@ -1,74 +1,37 @@
 // DOM Elements
 const portfolioFilters = document.querySelectorAll('.filter-btn');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
-const contactForm = document.getElementById('contact-form');
 
-// Portfolio Filtering
-portfolioFilters.forEach(filter => {
-    filter.addEventListener('click', () => {
-        // Remove active class from all filters
-        portfolioFilters.forEach(f => f.classList.remove('active'));
-        // Add active class to clicked filter
-        filter.classList.add('active');
-        
-        const filterValue = filter.getAttribute('data-filter');
-        
-        portfolioItems.forEach(item => {
-            const category = item.getAttribute('data-category');
-            
-            if (filterValue === 'all' || category === filterValue) {
-                item.style.display = 'block';
-                item.style.animation = 'fadeInUp 0.6s ease-out';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-});
+// Portfolio scrolling elements
+const portfolioScroll = document.querySelector('.portfolio-scroll');
+const leftArrow = document.querySelector('.nav-arrow-left');
+const rightArrow = document.querySelector('.nav-arrow-right');
+const portfolioCards = document.querySelectorAll('.portfolio-card');
 
-// Contact Form Handling
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const weddingDate = formData.get('wedding-date');
-    const location = formData.get('location');
-    const message = formData.get('message');
-    
-    // Basic validation
-    if (!name || !email || !message) {
-        showNotification('Please fill in all required fields.', 'error');
-        return;
+// Portfolio Horizontal Scrolling
+let currentIndex = 0;
+
+function scrollPortfolio(direction) {
+    if (direction === 'left' && currentIndex > 0) {
+        currentIndex--;
+    } else if (direction === 'right' && currentIndex < portfolioCards.length - 1) {
+        currentIndex++;
     }
     
-    if (!isValidEmail(email)) {
-        showNotification('Please enter a valid email address.', 'error');
-        return;
+    // Scroll to show the current card
+    if (portfolioScroll) {
+        const cardWidth = 400 + 32; // card width + gap
+        const scrollPosition = currentIndex * cardWidth;
+        portfolioScroll.style.transform = `translateX(-${scrollPosition}px)`;
     }
-    
-    // Simulate form submission
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-        contactForm.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
-});
-
-// Email validation helper
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
 }
+
+// Arrow navigation
+if (leftArrow && rightArrow) {
+    leftArrow.addEventListener('click', () => scrollPortfolio('left'));
+    rightArrow.addEventListener('click', () => scrollPortfolio('right'));
+}
+
 
 // Notification system
 function showNotification(message, type = 'info') {
