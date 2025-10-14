@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main page -->
+  <url>
+    <loc>https://weddings.redhair.media/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://weddings.redhair.media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://weddings.redhair.media/de" />
+  </url>
+  
+  <!-- German version (future) -->
+  <url>
+    <loc>https://weddings.redhair.media/de</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://weddings.redhair.media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://weddings.redhair.media/de" />
+  </url>
+  
+  <!-- Legal pages -->
+  <url>
+    <loc>https://weddings.redhair.media/impressum</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://weddings.redhair.media/datenschutz</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Portfolio section -->
+  <url>
+    <loc>https://weddings.redhair.media/#portfolio</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- About section -->
+  <url>
+    <loc>https://weddings.redhair.media/#about</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contact section -->
+  <url>
+    <loc>https://weddings.redhair.media/#contact</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>

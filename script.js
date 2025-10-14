@@ -123,15 +123,22 @@ serviceCards.forEach(card => {
 // Social media links
 const socialLinks = document.querySelectorAll('.social-link');
 socialLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const platform = link.querySelector('i').className.includes('instagram') ? 'Instagram' :
-                        link.querySelector('i').className.includes('vimeo') ? 'Vimeo' :
-                        link.querySelector('i').className.includes('youtube') ? 'YouTube' :
-                        link.querySelector('i').className.includes('facebook') ? 'Facebook' : 'Social Media';
-        
-        showNotification(`This would open our ${platform} page.`, 'info');
-    });
+    // Only prevent default for footer social links (not the main social section)
+    const isFooterSocial = link.closest('.footer-socials');
+    
+    if (isFooterSocial) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const platform = link.querySelector('i') ? 
+                (link.querySelector('i').className.includes('instagram') ? 'Instagram' :
+                 link.querySelector('i').className.includes('vimeo') ? 'Vimeo' :
+                 link.querySelector('i').className.includes('youtube') ? 'YouTube' :
+                 link.querySelector('i').className.includes('facebook') ? 'Facebook' : 'Social Media') :
+                link.textContent.trim();
+            
+            showNotification(`This would open our ${platform} page.`, 'info');
+        });
+    }
 });
 
 // Brochure download
@@ -175,12 +182,141 @@ function preloadResources() {
 }
 
 
+// Language switching functionality
+class LanguageSwitcher {
+    constructor() {
+        this.currentLang = localStorage.getItem('language') || 'en';
+        this.init();
+    }
+
+    init() {
+        this.setupLanguageButtons();
+        this.applyLanguage(this.currentLang);
+        this.updateMetaTags();
+    }
+
+    setupLanguageButtons() {
+        const languageSwitcher = document.querySelector('.language-switcher');
+        const langSeparator = document.querySelector('.lang-separator');
+        
+        if (languageSwitcher) {
+            languageSwitcher.addEventListener('click', () => {
+                // Toggle between languages
+                const newLang = this.currentLang === 'en' ? 'de' : 'en';
+                this.switchLanguage(newLang);
+            });
+        }
+    }
+
+    switchLanguage(lang) {
+        this.currentLang = lang;
+        localStorage.setItem('language', lang);
+        this.applyLanguage(lang);
+        this.updateActiveButton(lang);
+        this.updateMetaTags();
+    }
+
+    applyLanguage(lang) {
+        const elements = document.querySelectorAll('[data-en][data-de]');
+        elements.forEach(element => {
+            const text = element.getAttribute(`data-${lang}`);
+            if (text) {
+                // Always use innerHTML for elements that might contain HTML tags
+                element.innerHTML = text;
+            }
+        });
+
+        // Update document language attribute
+        document.documentElement.lang = lang;
+    }
+
+    updateActiveButton(lang) {
+        const langSeparator = document.querySelector('.lang-separator');
+        if (langSeparator) {
+            // Update the separator text to show current language first
+            if (lang === 'de') {
+                langSeparator.textContent = 'de / en';
+            } else {
+                langSeparator.textContent = 'en / de';
+            }
+        }
+    }
+
+    updateMetaTags() {
+        // Update meta description based on language
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            if (this.currentLang === 'de') {
+                metaDescription.setAttribute('content', 'Professioneller Hochzeitsvideograf in Berlin & ganz Deutschland. Cinematic Wedding Films & Hochzeitsvideos von Redhair Media. Hochzeitsvideografie für unvergessliche Momente.');
+            } else {
+                metaDescription.setAttribute('content', 'Professional Wedding Videographer in Berlin & Germany. Cinematic Wedding Films & Wedding Videos by Redhair Media. Wedding Videography for unforgettable moments.');
+            }
+        }
+
+        // Update page title based on language
+        const title = document.querySelector('title');
+        if (title) {
+            if (this.currentLang === 'de') {
+                title.textContent = 'Hochzeitsvideograf Berlin & Deutschland | Cinematic Wedding Films - Redhair Media';
+            } else {
+                title.textContent = 'Wedding Videographer Berlin & Germany | Cinematic Wedding Films - Redhair Media';
+            }
+        }
+
+        // Update Open Graph title
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+            if (this.currentLang === 'de') {
+                ogTitle.setAttribute('content', 'Hochzeitsvideograf Berlin & Deutschland | Cinematic Wedding Films - Redhair Media');
+            } else {
+                ogTitle.setAttribute('content', 'Wedding Videographer Berlin & Germany | Cinematic Wedding Films - Redhair Media');
+            }
+        }
+
+        // Update Open Graph description
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        if (ogDescription) {
+            if (this.currentLang === 'de') {
+                ogDescription.setAttribute('content', 'Professioneller Hochzeitsvideograf in Berlin & ganz Deutschland. Cinematic Wedding Films für unvergessliche Hochzeitsmomente.');
+            } else {
+                ogDescription.setAttribute('content', 'Professional Wedding Videographer in Berlin & Germany. Cinematic Wedding Films for unforgettable wedding moments.');
+            }
+        }
+
+        // Update Twitter Card title
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twitterTitle) {
+            if (this.currentLang === 'de') {
+                twitterTitle.setAttribute('content', 'Hochzeitsvideograf Berlin & Deutschland | Cinematic Wedding Films');
+            } else {
+                twitterTitle.setAttribute('content', 'Wedding Videographer Berlin & Germany | Cinematic Wedding Films');
+            }
+        }
+
+        // Update Twitter Card description
+        const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDescription) {
+            if (this.currentLang === 'de') {
+                twitterDescription.setAttribute('content', 'Professioneller Hochzeitsvideograf in Berlin & ganz Deutschland. Cinematic Wedding Films für unvergessliche Momente.');
+            } else {
+                twitterDescription.setAttribute('content', 'Professional Wedding Videographer in Berlin & Germany. Cinematic Wedding Films for unforgettable moments.');
+            }
+        }
+    }
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     preloadResources();
     
     // Add loading class removal
     document.body.classList.remove('loading');
+    
+    // Initialize language switcher
+    const languageSwitcher = new LanguageSwitcher();
+    
+    // Make it globally accessible for debugging
+    window.languageSwitcher = languageSwitcher;
     
     // Initialize any other components here
     console.log('Wedding Portfolio Website Loaded Successfully!');

@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://weddings.redhair.media/sitemap.xml
+
+# Block access to admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow all images for SEO
+Allow: /public/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+
+# Allow CSS and JS for proper rendering
+Allow: /*.css
+Allow: /*.js
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
