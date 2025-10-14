@@ -2,47 +2,8 @@
 const portfolioFilters = document.querySelectorAll('.filter-btn');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-// Portfolio scrolling elements
-const portfolioScroll = document.querySelector('.portfolio-scroll');
-const leftArrow = document.querySelector('.nav-arrow-left');
-const rightArrow = document.querySelector('.nav-arrow-right');
+// Portfolio elements
 const portfolioCards = document.querySelectorAll('.portfolio-card');
-
-// Portfolio Horizontal Scrolling
-let currentIndex = 0;
-
-function scrollPortfolio(direction) {
-    if (direction === 'left' && currentIndex > 0) {
-        currentIndex--;
-    } else if (direction === 'right' && currentIndex < portfolioCards.length - 1) {
-        currentIndex++;
-    }
-    
-    // Scroll to show the current card
-    if (portfolioScroll) {
-        const cardWidth = 400 + 32; // card width + gap
-        const containerWidth = portfolioScroll.parentElement.offsetWidth;
-        const scrollPosition = currentIndex * cardWidth - (containerWidth / 2 - cardWidth / 2);
-        portfolioScroll.style.transform = `translateX(-${Math.max(0, scrollPosition)}px)`;
-    }
-}
-
-// Initialize portfolio on load
-document.addEventListener('DOMContentLoaded', () => {
-    if (portfolioScroll) {
-        // Center the first card on load
-        const cardWidth = 400 + 32;
-        const containerWidth = portfolioScroll.parentElement.offsetWidth;
-        const initialPosition = (containerWidth / 2) - (cardWidth / 2);
-        portfolioScroll.style.transform = `translateX(${Math.max(0, initialPosition)}px)`;
-    }
-});
-
-// Arrow navigation
-if (leftArrow && rightArrow) {
-    leftArrow.addEventListener('click', () => scrollPortfolio('left'));
-    rightArrow.addEventListener('click', () => scrollPortfolio('right'));
-}
 
 
 // Notification system
