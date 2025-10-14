@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'No build step required for static site'",
-    "dev": "python3 -m http.server 3000"
-  },
-  "dependencies": {
-    "@vercel/edge": "^0.1.2"
+    "build": "echo 'Static site - no build required'"
   }
 }
