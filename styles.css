@@ -81,10 +81,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Top Navigation */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-primary-bg);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 /* Hero Section */
 .hero {
     background: var(--color-primary-bg);
     padding: 40px 0;
+    margin-top: 60px; /* Add margin to account for fixed nav */
 }
 
 .hero-content {
@@ -102,7 +124,6 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: center;
     gap: 0.3rem;
-    flex: 1;
 }
 
 .title-main {
@@ -131,8 +152,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Header Layout */
 .hero-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 800px;
     margin: 0 auto 1rem auto;
@@ -142,10 +163,13 @@ h1, h2, h3, h4, h5, h6 {
 .language-switcher {
     cursor: pointer;
     transition: opacity 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 .language-switcher:hover {
     opacity: 0.7;
+    background-color: var(--color-secondary-bg);
 }
 
 .lang-separator {
@@ -708,6 +732,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .top-nav {
+        padding: 10px 0;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .hero {
+        margin-top: 50px; /* Adjust for smaller nav on mobile */
+    }
+    
     .hero-title {
         font-size: 2.2rem;
         margin-bottom: 1.5rem;
@@ -765,12 +801,24 @@ h1, h2, h3, h4, h5, h6 {
 
     .footer-content {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
         gap: 1.5rem;
+    }
+    
+    .footer-logo {
+        text-align: left;
+    }
+    
+    .footer-logo p {
+        text-align: left;
+    }
+    
+    .business-info {
+        text-align: left;
     }
 
     .footer-socials {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .footer-legal {
@@ -840,33 +888,20 @@ h1, h2, h3, h4, h5, h6 {
         justify-content: center;
     }
     
-    /* Language Switcher Mobile */
-    .hero-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .hero-title {
-        text-align: center;
-        align-items: center;
-    }
-    
-    .hero-subtitle {
-        text-align: center;
-    }
-    
-    .language-switcher {
-        align-self: center;
-    }
-    
     .lang-separator {
         font-size: 0.7rem;
     }
 }
 
 @media (max-width: 480px) {
+    .top-nav {
+        padding: 8px 0;
+    }
+    
+    .hero {
+        margin-top: 45px; /* Adjust for smallest nav on mobile */
+    }
+    
     .container {
         padding: 0 15px;
     }
